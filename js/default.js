@@ -1,18 +1,16 @@
 var separate_time=function(time){
-  var sec     =time.getSeconds();
-  var min     =time.getMinutes();
-  var hours   =time.getHours();
-  var days    =time.getDate();
-  var month   =time.getMonth();
-  var year    =time.getFullYear();
-  return [sec,min,hours,days,month,year];
+  var sec     =time.getSeconds((time/1000)%60);
+  var min     =time.getMinutes((time/1000/60)%60);
+  var hours   =time.getHours((time/1000/60/60)%60);
+  var days    =time.getDate((time/1000/60/60/60)%60);
+  return [sec,min,hours,days];
 }
 
 var now =new Date();
-var counter=separate_time(now);
+var target=new Date(2020,7,24,0,0,0,0);
+var diff=target.getTime()-now.getTime();
+var counter=separate_time(diff);
 document.getElementById('countdown').textContent=
-  counter[5]+'年'+
-  counter[4]+'月'+
   counter[3]+'日'+
   counter[2]+'時'+
   counter[1]+'分'+
