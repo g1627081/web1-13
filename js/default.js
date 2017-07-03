@@ -43,4 +43,15 @@ document.getElementById('form').select.onchange=function(){
 
 function setCookie(c_name,value,expiredays){
    var extime=now Date().getTime();
+  var cltime=new Date(extime+(60*60*24*1000*expiredays));
+  var exdate=cltime.toUTCString();
+  var s="";
+  s+=c_name+"="escape(value);
+  s+="; path="+location.pathname;
+  if(expiredays){
+    s+="; expires"+exdate+";";
+  }else{
+    s+=";";
+  }
+  document.cookie=s;
 }
