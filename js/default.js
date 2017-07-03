@@ -40,3 +40,7 @@ opt.selected=true;
 document.getElementById('form').select.onchange=function(){
   location.href=document.getElementById('form').select.value;
 }
+
+function setCookie(c_name,value,expiredays){
+   var extime=now Date().getTime();
+}
